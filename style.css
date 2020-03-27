@@ -1,12 +1,40 @@
+@import url("crt.css");
 main {
     width: 1020px;
     margin: auto;
 }
+.monitor {
+    display: block;
+    margin: auto;
+    width: 745px;
+    height: 550px;
+    background: url("assets/images/Crt_Monitor_clip_art.svg");
+    background-size: cover;
+    background-position: left;
+}
 .screen {
-    width: 100%;
+    width: 500px;
+    height: 370px;
+    position: relative;
+    top: 68px;
+    left: 119px;
+    border: none;
+    border-radius: 12px;
+    outline: none;
+    resize: none;
+    font-family: 'Cousine',monospace;
+    font-size: 16px;
+    color: #7dc884;
+    text-shadow: 0 0 1px #7dc884;
+    background: #000000de;
 }
 .keyboard{
-    width: 100%;
+    padding: 5px;
+    padding-left: 0;
+    padding-bottom: 0;
+    background: #eceeef;
+    border: 4px solid #c3c5c7;
+    border-radius: 5px;
 }
 .row {
     display: flex;
@@ -14,9 +42,20 @@ main {
     margin-bottom: 2px;
 }
 .key{
-    border: 1px solid black;
-    padding: 5px;
-    margin-left: 2px;
+    min-width: 40px;
+    height: 40px;
+    padding: 0 5px;
+    margin-left: 6px;
+    font-weight: 500;
+    line-height: 40px;
+    text-align: center;
+    color: #ffffff;
+    background: #b1b1b1;
+    border: 5px outset #d8dadc;
+    border-radius: 3px;
+    cursor: pointer;
+    user-select: none;
+    transition: border-radius 0.3s, background-color 0.3s;
 }
 .hidden {
     display: none;

@@ -2,11 +2,12 @@ const main = document.createElement("main");
 document.body.append(main);
 
 
+const monitor = document.createElement("div");
+monitor.className = "monitor";
 const screen = document.createElement("textarea");
-screen.className = "screen";
-
-main.append(screen);
-
+screen.className ="screen crt";
+monitor.append(screen);
+main.append(monitor);
 
 const keyboard = document.createElement("div");
 keyboard.className = "keyboard";
