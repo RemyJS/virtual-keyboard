@@ -14,7 +14,6 @@ keyboard.className = "keyboard";
 main.append(keyboard); 
 
 
-
 const keyNames = [
     ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace"],
     ["Tab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight", "Backslash", "Delete"],
@@ -50,6 +49,7 @@ const enCaseDown = [
     ["Shift", "z", "x", "c", "v", "b", "n", "m", ",", ".", "/", "▲", "Shift"],
     ["Ctrl", "Win", "Alt", " ", "Alt", "◄", "▼", "►", "Ctrl"]
 ];
+
 function addKeys(row,n){
     for(let i = 0; i < keyNames[n].length; i++){
 
@@ -61,10 +61,16 @@ function addKeys(row,n){
         ru.classList.add("ru");
 
         let ruKeyCaseUp = document.createElement("span");
+
         ruKeyCaseUp.classList.add("caseUp");
         ruKeyCaseUp.innerText = ruCaseUp[n][i];
-
         ru.append(ruKeyCaseUp);
+
+        let ruKeyCaseDown = document.createElement("span");
+        ruKeyCaseDown.classList.add("caseDown");
+        ruKeyCaseDown.innerText = ruCaseDown[n][i];
+        ru.append(ruKeyCaseDown);
+
 
         let en = document.createElement("span");
         en.classList.add("en");
@@ -72,8 +78,12 @@ function addKeys(row,n){
         let enKeyCaseUp = document.createElement("span");
         enKeyCaseUp.classList.add("caseUp");
         enKeyCaseUp.innerText = enCaseUp[n][i];
-
         en.append(enKeyCaseUp);
+
+        let enKeyCaseDown = document.createElement("span");
+        enKeyCaseDown.classList.add("caseDown");
+        enKeyCaseDown.innerText = enCaseDown[n][i];
+        en.append(enKeyCaseDown);
 
         key.append(ru);
         key.append(en);
@@ -81,7 +91,7 @@ function addKeys(row,n){
     }
 }
 
-for(let i = 0; i < 5; i++){
+for(let i = 0; i < 5; i++){//add rows to keyboard 
     let row = document.createElement("div");
     row.className = "row";
     addKeys(row,i);
@@ -89,5 +99,19 @@ for(let i = 0; i < 5; i++){
 }
 
 const enKeys = document.querySelectorAll(".en");
+const ruKeys = document.querySelectorAll(".ru");
+enKeys.forEach((el) => el.classList.toggle("hidden"));
 
-enKeys.forEach((el) => el.classList.add("hidden"));
+const upKeys = document.querySelectorAll(".caseUp");
+const downKeys = document.querySelectorAll(".caseDown");
+downKeys.forEach((el) => el.classList.toggle("hidden"));
+
+function changeLang(){
+    enKeys.forEach((el) => el.classList.toggle("hidden"));
+    ruKeys.forEach((el) => el.classList.toggle("hidden"));
+}
+
+function caps(){
+    upKeys.forEach((el) => el.classList.toggle("hidden"));
+    downKeys.forEach((el) => el.classList.toggle("hidden"));
+}
