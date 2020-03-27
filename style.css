@@ -1,0 +1,23 @@
+main {
+    width: 1020px;
+    margin: auto;
+}
+.screen {
+    width: 100%;
+}
+.keyboard{
+    width: 100%;
+}
+.row {
+    display: flex;
+    justify-content: start;
+    margin-bottom: 2px;
+}
+.key{
+    border: 1px solid black;
+    padding: 5px;
+    margin-left: 2px;
+}
+.hidden {
+    display: none;
+}
