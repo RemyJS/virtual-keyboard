@@ -10,6 +10,7 @@ main {
 }
 .monitor {
     display: block;
+    transform: scale(0.9);
     margin: auto;
     width: 745px;
     height: 550px;
@@ -33,9 +34,10 @@ main {
     text-shadow: 0 0 1px #7dc884;
     background: #000000de;
 }
-.keyboard{
+.keyboard {
+    margin: auto;
     margin-top: 50px;
-    transform: rotateX(20deg);
+    transform: rotateX(12deg);
     padding: 5px;
     padding-left: 0;
     padding-bottom: 0;
@@ -43,6 +45,7 @@ main {
     border-bottom: 4px outset #c3c5c7;
     border-right: 2px outset #c3c5c7;
     border-radius: 5px;
+    width: max-content;
 }
 .row {
     display: flex;
@@ -52,7 +55,7 @@ main {
 .key{
     min-width: 40px;
     height: 40px;
-    padding: 0 5px;
+    /* padding: 0 5px; */
     margin-left: 6px;
     font-weight: 500;
     line-height: 40px;
@@ -66,6 +69,30 @@ main {
     user-select: none;
     transition: border-radius 0.3s, background-color 0.3s;
 }
+.key:hover {
+    background:#92ad8d;
+}
+.key:active {
+    background: cornflowerblue;
+    border-radius: 50%;
+}
+.key__press {
+    background: cornflowerblue;
+    border-radius: 50%;
+}
 .hidden {
     display: none;
+}
+/* big key */
+.Backspace,.ShiftLeft,.CapsLock {
+    width: 100px;
+}
+.ShiftRight, .Enter {
+    width: 86px;
+}
+.Space {
+    width: 340px;
+}
+.Tab {
+    width: 50px;
 }

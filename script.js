@@ -15,7 +15,7 @@ keyboard.className = "keyboard";
 main.append(keyboard); 
 
 
-const keyNames = [
+const keyCodes = [
     ["Backquote", "Digit1", "Digit2", "Digit3", "Digit4", "Digit5", "Digit6", "Digit7", "Digit8", "Digit9", "Digit0", "Minus", "Equal", "Backspace"],
     ["Tab", "KeyQ", "KeyW", "KeyE", "KeyR", "KeyT", "KeyY", "KeyU", "KeyI", "KeyO", "KeyP", "BracketLeft", "BracketRight", "Backslash", "Delete"],
     ["CapsLock", "KeyA", "KeyS", "KeyD", "KeyF", "KeyG", "KeyH", "KeyJ", "KeyK", "KeyL", "Semicolon", "Quote", "Enter"],
@@ -52,11 +52,11 @@ const enCaseDown = [
 ];
 
 function addKeys(row,n){
-    for(let i = 0; i < keyNames[n].length; i++){
+    for(let i = 0; i < keyCodes[n].length; i++){
 
         let key = document.createElement("div");
         key.classList.add("key");
-        key.classList.add(keyNames[n][i]);
+        key.classList.add(keyCodes[n][i]);
 
         let ru = document.createElement("span");
         ru.classList.add("ru");
@@ -116,3 +116,16 @@ function caps(){
     upKeys.forEach((el) => el.classList.toggle("hidden"));
     downKeys.forEach((el) => el.classList.toggle("hidden"));
 }
+//event 
+window.addEventListener("keypress",(event)=>{
+    console.log(event);
+    // event.preventDefault();
+    let code = event.code;
+    console.log(code);
+    keyboard.querySelector(`.${code}`).classList.add("key__press");
+});
+window.addEventListener("keyup",(event)=>{
+    event.preventDefault();
+    let code = event.code;
+    keyboard.querySelector(`.${code}`).classList.remove("key__press");
+});
