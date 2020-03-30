@@ -74,11 +74,11 @@ main {
 }
 .key:active {
     background: cornflowerblue;
-    border-radius: 50%;
+    border-radius: 40%;
 }
-.key__press {
+.key__down {
     background: cornflowerblue;
-    border-radius: 50%;
+    border-radius: 40%;
 }
 .hidden {
     display: none;

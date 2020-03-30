@@ -101,31 +101,55 @@ for(let i = 0; i < 5; i++){//add rows to keyboard
 
 const enKeys = document.querySelectorAll(".en");
 const ruKeys = document.querySelectorAll(".ru");
-enKeys.forEach((el) => el.classList.toggle("hidden"));
+// enKeys.forEach((el) => el.classList.toggle("hidden"));
 
 const upKeys = document.querySelectorAll(".caseUp");
 const downKeys = document.querySelectorAll(".caseDown");
-downKeys.forEach((el) => el.classList.toggle("hidden"));
+upKeys.forEach((el) => el.classList.toggle("hidden"));
 
 function changeLang(){
-    enKeys.forEach((el) => el.classList.toggle("hidden"));
-    ruKeys.forEach((el) => el.classList.toggle("hidden"));
+    let lang = localStorage.getItem("lang");
+    if(!lang)lang ="ru";
+    if(lang == "ru"){
+        enKeys.forEach((el) => el.classList.remove("hidden"));
+        ruKeys.forEach((el) => el.classList.add("hidden"));
+        localStorage.setItem("lang","en");
+    }else{
+        enKeys.forEach((el) => el.classList.add("hidden"));
+        ruKeys.forEach((el) => el.classList.remove("hidden"));
+        localStorage.setItem("lang","ru");
+    }
 }
-
+function hideLangKeys(){
+    let lang = localStorage.getItem("lang");
+    if(!lang)lang ="ru";
+    if(lang == "ru"){
+        enKeys.forEach((el) => el.classList.add("hidden"));
+    }else{
+        ruKeys.forEach((el) => el.classList.add("hidden"));
+    }
+}
+hideLangKeys();
 function caps(){
     upKeys.forEach((el) => el.classList.toggle("hidden"));
     downKeys.forEach((el) => el.classList.toggle("hidden"));
 }
 //event 
-window.addEventListener("keypress",(event)=>{
+window.addEventListener("keydown",(event)=>{
     console.log(event);
-    // event.preventDefault();
-    let code = event.code;
-    console.log(code);
-    keyboard.querySelector(`.${code}`).classList.add("key__press");
-});
-window.addEventListener("keyup",(event)=>{
     event.preventDefault();
     let code = event.code;
-    keyboard.querySelector(`.${code}`).classList.remove("key__press");
+    // console.log(code);
+    let elem = keyboard.querySelector(`.${code}`);
+    if(!elem) return false;
+    elem.classList.add("key__down");
 });
+window.addEventListener("keyup",(event)=>{
+    // console.log(event);
+    event.preventDefault();
+    let code = event.code;
+    let elem = keyboard.querySelector(`.${code}`);
+    if(!elem) return false;
+    elem.classList.remove("key__down");
+});
+
