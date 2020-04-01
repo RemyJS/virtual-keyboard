@@ -142,14 +142,16 @@ window.addEventListener("keydown", (event) => {
     let code = event.code;
     if (event.ctrlKey && event.altKey) changeLang();//смена языка 
     if (code == "CapsLock") caps();
+    if(event.key == "Shift" && event.shiftKey && !event.repeat)caps();//Если зажат шифт
     let elem = keyboard.querySelector(`.${code}`);
     if (!elem) return false;
     elem.classList.add("key__down");
     printKey(elem);
 });
 window.addEventListener("keyup", (event) => {
-    // console.log(event);
+    //  console.log(event);
     event.preventDefault();
+    if(event.key == "Shift" && !event.shiftKey)caps();//шифт отпущен 
     let code = event.code;
     let elem = keyboard.querySelector(`.${code}`);
     if (!elem) return false;
@@ -159,12 +161,13 @@ window.addEventListener("keyup", (event) => {
 keyboard.addEventListener("click", (event) => {
     let target = event.target;
     let key = target.closest(".key");
+    if(!key)return false;
     switch(key.classList[1]){
         case "CapsLock":
             caps();
             break;           
     }
-    if (key) printKey(key);
+    printKey(key);
 });
 
 const keyControls = ["Backspace", "Tab", "CapsLock", "ShiftLeft", "ControlLeft", "MetaLeft",
