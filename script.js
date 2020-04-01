@@ -218,4 +218,4 @@ keyboard.addEventListener("click", (event) => {
   return "click";
 });
 
-screen.value = "Wake Up, Neo...\nhttps://github.com/RemyJS\nОС: Windows\nCtrl+Alt Для смены языка\n";
+screen.value = "Wake Up, Neo...\nhttps://github.com/RemyJS\nDiscord:@Remy_Lee\nОС: Windows\nCtrl+Alt Для смены языка\n";
